@@ -2,35 +2,35 @@
 
 ## 1. Project Overview
 
-The Fake Job Posting Classifier is a machine learning project designed to identify potentially suspicious job postings and distinguish them from normal job postings.
+The Fake Job Posting Classifier is a machine learning project that identifies potentially suspicious job postings and distinguishes them from normal job postings.
 
-Fake job postings may mislead job seekers, collect personal information, or involve fraudulent payment requests. This project uses natural language processing (NLP) and machine learning to analyze job descriptions and predict whether a posting is normal or potentially suspicious.
+Fake job postings can mislead job seekers, collect personal information, or request fraudulent payments. This project uses Natural Language Processing (NLP) and machine learning to analyze job posting text.
 
 ## 2. Problem Statement
 
-Job seekers may find it difficult to distinguish genuine job opportunities from fraudulent postings. Manually checking every job advertisement takes time and may not always identify suspicious content.
+Job seekers may find it difficult to identify fake job advertisements. Manually checking every posting takes time and may not always reveal suspicious activity.
 
-**Objective:** Develop a machine learning prototype that analyzes job posting text and classifies it as either `Normal` or `Potentially Suspicious`.
+**Objective:** Build a machine learning prototype that classifies job postings as **Normal** or **Potentially Suspicious**.
 
 ## 3. Methodology
 
 The project follows these steps:
 
-1. **Data collection:** Load the job posting dataset from `dataset/DataSet.csv`.
-2. **Data preprocessing:** Select relevant text fields, handle missing values, combine text, and prepare classification labels.
-3. **Feature extraction:** Use TF-IDF (Term Frequency–Inverse Document Frequency) to convert text into numerical features.
-4. **Model training:** Train a Logistic Regression classifier using the training dataset.
-5. **Model evaluation:** Evaluate performance on a held-out test dataset using accuracy, precision, recall, F1-score, and a confusion matrix.
-6. **Prediction:** Allow users to enter job posting details through a Streamlit interface and receive a prediction.
+1. **Data Collection:** Load the job posting dataset from `dataset/DataSet.csv`.
+2. **Data Preprocessing:** Handle missing values, select relevant text fields, and prepare classification labels.
+3. **Feature Extraction:** Use TF-IDF (Term Frequency–Inverse Document Frequency) to convert text into numerical features.
+4. **Model Training:** Train a Logistic Regression classifier using the training dataset.
+5. **Model Evaluation:** Measure performance using accuracy, precision, recall, F1-score, and a confusion matrix.
+6. **Prediction:** Use a Streamlit web interface to analyze job posting details.
 
-### Machine Learning Algorithms and Tools
+### Technologies Used
 
 - Python
+- Streamlit
 - Pandas and NumPy
 - Scikit-learn
 - TF-IDF Vectorizer
 - Logistic Regression
-- Streamlit
 - Git and GitHub
 
 ## 4. Project Structure
@@ -51,24 +51,23 @@ SWYNEX-AI-Problem-Design/
 
 ### Installation
 
-Make sure Python is installed. Open a terminal in the project directory and run:
+Ensure Python is installed. Open a terminal in the project directory and run:
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-### Run the Streamlit Application
+### Run the Application
 
 ```bash
 python -m streamlit run app.py
 ```
 
-The application opens in a browser. Enter the job title, company profile, description, requirements, and benefits, then click **Analyze Job Posting**.
+Open the local URL displayed in the terminal. Enter the job title, company profile, description, requirements, and benefits, then click **Analyze Job Posting**.
 
 ### Example 1: Potentially Suspicious Job
 
 **Input:**
-
 - Job Title: Work From Home — Easy Income
 - Description: Earn a very high income with no experience required. Pay a registration fee to get started.
 
@@ -77,19 +76,16 @@ The application opens in a browser. Enter the job title, company profile, descri
 ### Example 2: Normal Job Posting
 
 **Input:**
-
 - Job Title: Junior Python Developer
-- Description: The candidate will develop and maintain Python applications, work with a development team, and participate in code reviews.
+- Description: Develop and maintain Python applications, collaborate with a development team, and participate in code reviews.
 
 **Expected output:** Normal
 
-*These examples illustrate expected behavior; actual predictions depend on the trained model.*
+*These examples illustrate expected behavior. Actual predictions depend on the trained model and are not proof that a job is fraudulent or legitimate.*
 
 ## 6. Model Evaluation
 
-The prototype evaluates the classifier using a held-out test split.
-
-The recorded evaluation results from the Streamlit application are:
+The prototype evaluates the model on a held-out test dataset. The recorded Streamlit evaluation results are:
 
 | Metric | Result |
 |---|---:|
@@ -100,20 +96,47 @@ The recorded evaluation results from the Streamlit application are:
 | False Positives | 116 |
 | Missed Suspicious Jobs | 15 |
 
-**Understanding the results:**
+### Understanding the Results
 
-- **Accuracy:** The overall proportion of correct predictions.
-- **Precision:** How many postings predicted as suspicious were actually suspicious.
-- **Recall:** How many suspicious postings were correctly identified.
-- **F1-score:** A combined measure of precision and recall.
-- **False positive:** A normal job incorrectly predicted as suspicious.
-- **False negative:** A suspicious job incorrectly predicted as normal.
+- **Accuracy:** Overall proportion of correct predictions.
+- **Precision:** Proportion of predicted suspicious postings that were actually suspicious.
+- **Recall:** Proportion of suspicious postings correctly identified.
+- **F1-score:** Combined measure of precision and recall.
+- **False Positive:** A normal job incorrectly classified as suspicious.
+- **False Negative:** A suspicious job incorrectly classified as normal.
 
-The evaluation values describe the recorded test split and are not a guarantee of real-world performance.
+These results describe the recorded test split and do not guarantee real-world performance.
 
 ## 7. Limitations
 
-- The model depends on the quality, size, and representativeness of the training dataset.
-- New fraud patterns may not be recognized by the trained model.
-- Legitimate postings may be incorrectly flagged as suspicious.
-- Some fraudulent postings may be classified as normal
+- Performance depends on the quality and representativeness of the training dataset.
+- The model may not recognize new fraud patterns.
+- Genuine job postings may be incorrectly flagged as suspicious.
+- Some fraudulent postings may be classified as normal.
+- Text alone cannot verify an employer's identity or guarantee a job's authenticity.
+- Additional testing is needed before real-world deployment.
+
+## 8. Ethical Considerations
+
+- Treat predictions as preliminary warnings, not proof of fraud.
+- Verify employers and job offers through official websites and trusted recruitment channels.
+- Do not use the model as the sole basis for rejecting applicants, employers, or job advertisements.
+- Handle personal information responsibly and avoid collecting unnecessary sensitive data.
+- Review model errors regularly and communicate its limitations clearly.
+- Use human judgment alongside model predictions.
+
+## 9. Future Improvements
+
+- Train and evaluate the model using larger and more diverse datasets.
+- Improve text preprocessing and feature engineering.
+- Compare additional machine learning algorithms.
+- Provide clearer explanations for predictions.
+- Test the application with users and monitor performance over time.
+
+## 10. Conclusion
+
+This project demonstrates how Natural Language Processing and machine learning can help screen job postings for potentially suspicious content. The Streamlit prototype allows users to enter job details, view predictions, and inspect model evaluation results.
+
+The system is a decision-support tool and should be combined with independent verification and human judgment.
+
+**Disclaimer:** This prototype is intended for educational purposes. Its predictions do not guarantee that a job posting is genuine or fraudulent.
